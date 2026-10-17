@@ -5,9 +5,12 @@
 https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 
 > 두산 ROKEY Boot Camp 9기 · 협동-1 프로젝트 "ROS2를 활용한 로봇 자동화 공정 시스템 구현" · D-2조 **디투(D2)** (한석형 · 민범진 · 박진용 · 황인재, 멘토 이일주) · 2026-09-18 ~ 09-30
+>
+> 팀 저장소 [rokey9-d2/rokey_9_pjt1_D2](https://github.com/rokey9-d2/rokey_9_pjt1_D2)를 fork해, 내 역할과 내가 한 것을 덧붙인 개인 포트폴리오판이다.
 
 | 항목 | 내용 |
 |---|---|
+| 내 역할 | **PM** · 인터페이스 · 운영 화면(HMI) · 기록 DB · 셀 통합 · 무게 측정 안정화 → [내가 한 것](#내가-한-것) |
 | 하드웨어 | Doosan M0609(6축 협동로봇) + OnRobot RG2 그리퍼 |
 | 소프트웨어 | Ubuntu 24.04 · ROS 2 Jazzy · Python 3.12 · FastAPI + Next.js(운영 화면) · SQLite |
 | 결과 | 시작 1번으로 그릇 2 · 컵 2 무정지 완주(배속 1.0 · 약 13분) · 예외 8종 설계 · 7종 실기 복구 · 자동 시험 616개 통과 |
@@ -19,12 +22,13 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 2. [주요 기능](#주요-기능)
 3. [시스템 구성](#시스템-구성)
 4. [결과](#결과)
-5. [트러블슈팅](#트러블슈팅)
-6. [배운 점 · 한계](#배운-점--한계)
-7. [실행 방법](#실행-방법)
-8. [개발 환경 · 사용 장비](#개발-환경--사용-장비)
-9. [프로젝트 구조](#프로젝트-구조)
-10. [팀 · 라이선스](#팀--라이선스)
+5. [내가 한 것](#내가-한-것)
+6. [트러블슈팅](#트러블슈팅)
+7. [배운 점 · 한계](#배운-점--한계)
+8. [실행 방법](#실행-방법)
+9. [개발 환경 · 사용 장비](#개발-환경--사용-장비)
+10. [프로젝트 구조](#프로젝트-구조)
+11. [팀 · 라이선스](#팀--라이선스)
 
 ## 배경과 목표
 
@@ -46,8 +50,8 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 ### 아키텍처
 
 <p align="center">
-  <a href="https://hwang-injae.github.io/rokey_9_pjt1_D2/images/system_architecture_pc.html"><img src="docs/images/system_architecture_pc.png" width="900" alt="시스템 아키텍처"></a><br>
-  <sub><a href="https://hwang-injae.github.io/rokey_9_pjt1_D2/images/system_architecture_pc.html">시스템 아키텍처 HTML</a> · <a href="docs/images/system_architecture_pc.png">PNG</a></sub>
+  <a href="https://rokey9-d2.github.io/rokey_9_pjt1_D2/images/system_architecture_pc.html"><img src="docs/images/system_architecture_pc.png" width="900" alt="시스템 아키텍처"></a><br>
+  <sub><a href="https://rokey9-d2.github.io/rokey_9_pjt1_D2/images/system_architecture_pc.html">시스템 아키텍처 HTML</a> · <a href="docs/images/system_architecture_pc.png">PNG</a></sub>
 </p>
 
 **PC 2대 · 프로그램(노드) 2개**(PC 1대로도 돌아간다). 기능(집기 · 무게 · 닦기 …)은 노드가 아니라 **파이썬 함수**이고, 메인 프로그램 `flow_node` 가 순서대로 부르며 로봇 명령도 여기서만 낸다. 두 PC 는 GPU PC 의 Fast DDS Discovery Server 로 서로를 찾는다([실행 방법 5-4](docs/setup.md#5-실제-로봇)).
@@ -113,9 +117,19 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 | 용기당 사이클 타임 | 배속 1.0 에서 그릇 153 · 219 s(잔반 털기 1회 포함) · 컵 182 · 192 s · 평균 186.5 s | 90 s 이내 | **미달** |
 | 자동 시험 | `pytest` 616 passed · 9 skipped · 1 xfailed · 화면 계산 15 pass | 로봇 없이 실패 0 | 달성 |
 
+## 내가 한 것
+
+PM 으로 요구사항 · 설계 문서와 결정 기록, 셀 통합을 이끌었고 인터페이스 · 운영 화면 · 기록 DB 와 무게 측정 안정화를 맡았다.
+
+- **실행 구조 결정** — 팀원이 찾은 "서비스 콜백 안에서 두산 API 를 부르면 멈추는" 문제를 실제 드라이버로 다시 확인하고, 실행 구조 5가지를 비교 시험해 **노드 2개 · 기능은 함수 · 로봇 명령은 메인 프로그램 한 곳**으로 바꾸기로 정했다. → [트러블슈팅 1](#1-콜백-안-로봇-명령-교착--실행-구조-변경)
+- **인터페이스 먼저 고정** — 기능 함수 13개의 약속(`cobot_api`)과 메시지 3개(`cobot_msgs`)를 먼저 정해, 4명이 로봇 1대를 나눠 쓰면서도 로봇 없이 각자 개발 · 시험할 수 있게 했다. → [인터페이스 문서](docs/02_인터페이스_IRD.md)
+- **운영 화면 · 기록 DB** — FastAPI · Next.js 운영 화면(시작 · 일시 정지 · 재개 · 중단, 멈춤 원인 안내, 누적 KPI)과 SQLite 기록 DB(표 5개)를 맡았다. 두 PC 를 무선으로 이은 구성에서 버튼 응답 7~96 ms · 기록 누락 0 을 확인했다.
+- **무게 측정 안정화** — 무게 측정을 이어받아, 값이 자세 · 시간에 따라 출렁이는 원인이 **그리퍼 케이블 장력**임을 찾고 케이블 여유 · 측정 자세 · 기준값 측정 절차를 정했다. → [트러블슈팅 2](#2-무게가-자세--시간에-따라-출렁임--그리퍼-케이블-장력)
+- **셀 통합 · 실기 운용** — 9/22 부터 통합을 맡아 9/23 기능 동결과 "기본 흐름은 유지하고 예외 처리만 고친다" 원칙을 정했다. 정해진 좌표로 내려가는 동작은 힘 감시 없이 Z 만 곧게 + 마지막 15 mm 완충으로 정했다. → [트러블슈팅 4](#4-재파지--툴-반납-중-안전정지--접근점에서-z-만-곧게--15-mm-완충)
+
 ## 트러블슈팅
 
-개발 중 만난 문제 가운데 구조 · 측정 · 정지 · 동선을 바꾼 대표 4가지다. 전체 8건은 [트러블슈팅 기록](docs/troubleshooting/)에 있다.
+내가 원인 확인이나 해결 결정에 참여한 문제 4가지다. 나머지 기록은 [트러블슈팅 기록](docs/troubleshooting/)에 있다.
 
 ### 1. 콜백 안 로봇 명령 교착 → 실행 구조 변경
 
@@ -150,7 +164,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 **배운 점**
 
 - 인터페이스를 먼저 고정하니, 로봇 1대를 나눠 쓰는 4명이 로봇 없이도 병렬로 개발할 수 있었다.
-- 로봇팔의 힘 센서로 잰 무게는 케이블 같은 하드웨어 요인에 크게 흔들렸다. 값이 이상하면 코드보다 측정 조건부터 확인해야 한다.
+- 로봇팔로 무게를 재 보니, 외력으로 재는 값은 케이블 같은 하드웨어 요인에 크게 흔들렸다. 코드보다 측정 조건을 먼저 확인해야 한다.
 - 바뀐 것마다 검증 수준(자동 시험 / 가상 / 실기)을 적게 하니, 실기 확인 전인 변경이 확인된 것처럼 병합되는 일을 막을 수 있었다.
 
 **한계와 다음에 할 것**
@@ -167,7 +181,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 
 ```bash
 # 받기 · 빌드 · 자동 시험 (ROS 2 Jazzy · colcon · pytest 설치 뒤 — setup.md 1~2)
-cd ~ && git clone https://github.com/hwang-injae/rokey_9_pjt1_D2.git rokey_pjt01_ws
+cd ~ && git clone https://github.com/rokey9-d2/rokey_9_pjt1_D2.git rokey_pjt01_ws
 cd ~/rokey_pjt01_ws && source /opt/ros/jazzy/setup.bash
 colcon build --symlink-install && source install/setup.bash
 python3 -m pytest -q src

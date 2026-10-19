@@ -171,7 +171,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 | 브라우저에서 바로 보기 | 무엇이 보이나 |
 |---|---|
 | <a href="https://viewer.diagrams.net/?lightbox=1&nav=1#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhwang-injae%2Fprewash-cell%2Fmain%2Fdocs%2Fimages%2Fsystem_architecture.drawio"><img src="https://img.shields.io/badge/draw.io-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white" alt="draw.io로 보기"></a> | 위 그림의 draw.io 원본 — 확대 · 이동 · 프로그램 카드 · 토픽 · 서비스 선 · 통신 표 · DB ERD |
-| <a href="https://rokey9-d2.github.io/rokey_9_pjt1_D2/images/archify/index.html#arch"><img src="https://img.shields.io/badge/archify-%EA%B7%B8%EB%A6%BC%20%EB%AA%A8%EC%9D%8C%204%EA%B0%9C-8250df?style=for-the-badge" alt="아키파이 그림 모음"></a> | 탭 4개 — 시스템 아키텍처 · 플로우 차트 · 상태 머신 · DB ERD(움직임 · 다크 모드 · 경로 보기 · 내보내기) |
+| <a href="https://hwang-injae.github.io/prewash-cell/images/archify/index.html#arch"><img src="https://img.shields.io/badge/archify-%EA%B7%B8%EB%A6%BC%20%EB%AA%A8%EC%9D%8C%204%EA%B0%9C-8250df?style=for-the-badge" alt="아키파이 그림 모음"></a> | 탭 4개 — 시스템 아키텍처 · 플로우 차트 · 상태 머신 · DB ERD(움직임 · 다크 모드 · 경로 보기 · 내보내기) |
 
 <details>
 <summary>PC 배치 · 통신 · 동작 흐름 · 플로우 차트</summary>
@@ -205,7 +205,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 
 <p align="center">
   <img src="docs/images/flow_chart.png" width="900" alt="플로우 차트 — 용기 1개의 정상 흐름과 예외 처리"><br>
-  <sub>왼쪽: 용기 1개의 정상 흐름 · 오른쪽: 예외 처리 · <a href="docs/images/flow_chart.svg">플로우 차트 SVG</a> · 움직이는 그림: <a href="https://rokey9-d2.github.io/rokey_9_pjt1_D2/images/archify/index.html#flow">그림 모음 → 플로우 차트</a> · <a href="https://rokey9-d2.github.io/rokey_9_pjt1_D2/images/archify/index.html#state">상태 머신</a></sub>
+  <sub>왼쪽: 용기 1개의 정상 흐름 · 오른쪽: 예외 처리 · <a href="docs/images/flow_chart.svg">플로우 차트 SVG</a> · 움직이는 그림: <a href="https://hwang-injae.github.io/prewash-cell/images/archify/index.html#flow">그림 모음 → 플로우 차트</a> · <a href="https://hwang-injae.github.io/prewash-cell/images/archify/index.html#state">상태 머신</a></sub>
 </p>
 
 </details>

@@ -170,7 +170,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 
 | 브라우저에서 바로 보기 | 무엇이 보이나 |
 |---|---|
-| <a href="https://viewer.diagrams.net/?lightbox=1&nav=1#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Frokey9-d2%2Frokey_9_pjt1_D2%2Fmain%2Fdocs%2Fimages%2Fsystem_architecture.drawio"><img src="https://img.shields.io/badge/draw.io-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white" alt="draw.io로 보기"></a> | 위 그림의 draw.io 원본 — 확대 · 이동 · 프로그램 카드 · 토픽 · 서비스 선 · 통신 표 · DB ERD |
+| <a href="https://viewer.diagrams.net/?lightbox=1&nav=1#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhwang-injae%2Fprewash-cell%2Fmain%2Fdocs%2Fimages%2Fsystem_architecture.drawio"><img src="https://img.shields.io/badge/draw.io-%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white" alt="draw.io로 보기"></a> | 위 그림의 draw.io 원본 — 확대 · 이동 · 프로그램 카드 · 토픽 · 서비스 선 · 통신 표 · DB ERD |
 | <a href="https://rokey9-d2.github.io/rokey_9_pjt1_D2/images/archify/index.html#arch"><img src="https://img.shields.io/badge/archify-%EA%B7%B8%EB%A6%BC%20%EB%AA%A8%EC%9D%8C%204%EA%B0%9C-8250df?style=for-the-badge" alt="아키파이 그림 모음"></a> | 탭 4개 — 시스템 아키텍처 · 플로우 차트 · 상태 머신 · DB ERD(움직임 · 다크 모드 · 경로 보기 · 내보내기) |
 
 <details>
@@ -257,7 +257,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 - **실행 구조 결정** — 팀원이 찾은 "서비스 콜백 안에서 두산 API를 부르면 멈추는" 문제를 실제 드라이버로 다시 확인하고, 실행 구조 5가지를 비교 시험해 **노드 2개 · 기능은 함수 · 로봇 명령은 메인 프로그램 한 곳**으로 바꾸기로 정했습니다. → [트러블슈팅 1](#-트러블슈팅)
 - **인터페이스 먼저 고정** — 기능 함수 약속(`cobot_api`)과 메시지(`cobot_msgs`)를 먼저 정해, 4명이 로봇 1대를 나눠 쓰면서도 로봇 없이 각자 개발 · 시험할 수 있게 했습니다. → [인터페이스 문서](docs/02_인터페이스_IRD.md)
 - **운영 화면 · 기록 DB** — FastAPI · Next.js 운영 화면(시작 · 일시 정지 · 재개 · 중단, 멈춤 원인 안내, 누적 KPI)과 SQLite 기록 DB(표 5개)를 맡았습니다. 두 PC를 무선으로 이은 구성에서 버튼 응답 7 ~ 96 ms · 기록 누락 0을 확인했습니다.
-- **무게 측정 안정화** — 무게 측정을 이어받아, 값이 자세 · 시간에 따라 출렁이는 원인이 **그리퍼 케이블 장력**임을 찾고 케이블 여유 · 측정 자세 · 기준값 측정 절차를 정했습니다. → [트러블슈팅 2](#-트러블슈팅)
+- **무게 측정 안정화** — 민범진이 처음 구현한 무게 측정을 이어받아, 값이 자세 · 시간에 따라 출렁이는 원인이 **그리퍼 케이블 장력**임을 찾고 케이블 여유 · 측정 자세 · 기준값 측정 절차를 정했습니다. → [트러블슈팅 2](#-트러블슈팅)
 - **셀 통합 · 실기 운용** — 9/22부터 통합을 맡아 9/23 기능 동결과 "기본 흐름은 유지하고 예외 처리만 고친다" 원칙을 정했습니다. 정해진 좌표로 내려가는 동작은 힘 감시 없이 Z만 곧게 + 마지막 15 mm 완충으로 정했습니다. → [트러블슈팅 4](#-트러블슈팅)
 
 ## 🧩 트러블슈팅
@@ -321,9 +321,9 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 | 이름 | 맡은 것 |
 |---|---|
 | 한석형(팀장) | 파지 · 이송 · 적재 · 좌표 티칭 · 워크셀 기구 제작 · 시연 영상 |
-| 민범진 | 무게 측정 · 잔반 판정 · 털기 · 헹굼 · 흐름 상태 머신 · 케이블 감지 · 넛지 재개 |
+| 민범진 | 무게 측정 초기 구현 · 잔반 판정 · 털기 · 헹굼 · 흐름 상태 머신 · 케이블 감지 · 넛지 재개 |
 | 박진용 | 세제 · 접촉 닦기 힘 제어 · 스펀지 고정틀 제작 · 공용 힘 함수 · 안전 파라미터 |
-| 황인재 | PM · 인터페이스(`cobot_api` · `cobot_msgs`) · 운영 화면 · 기록 DB · KPI · 무게 측정 안정화 · 통합 · 문서 |
+| 황인재 | PM · 인터페이스(`cobot_api` · `cobot_msgs`) · 운영 화면 · 기록 DB · KPI · 무게 측정 이어받아 안정화 · 통합 · 문서 |
 
 ## 🤝 개발 · 협업 방식
 
@@ -341,7 +341,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 | 9/29 | 실기 · 리허설 | 배속 1.0 무정지 완주 · 두 PC 무선 구성 · 예외 실기 · 리허설 |
 | 9/30 | 발표 · 제출 | 최종 실기 · 발표 · 제출(태그 `v1.0-submit`) |
 
-- **PR 흐름:** 팀원 코드는 브랜치 → PR → 리뷰 → 병합으로 넣었습니다. main에는 보호 규칙(PR 필수 · 승인 1)을 걸었고, PM이 맡은 문서 · 일정표 · 결정 기록과 결정에 따른 설정 · 인터페이스 변경은 main에 바로 반영했습니다. 9/21부터는 PR 승인 때마다 검증 수준(자동 시험 · 가상 · 실기)을 밝혔습니다([결정 기록 E20](docs/decisions/20260919_결정기록_DSN-03.md)). 동결 뒤에는 기본 흐름 순서는 그대로 두고, 예외 처리 · 운영 화면 · 기록 DB와 실기로 확인한 설정값(배속 1.0 · 컵 재파지 곧게 내려가기 · 무게 표본 간격 · 떨림 상한) · 컵 팔레트 재티칭만 바꿨습니다.
+- **PR 흐름:** 팀원 코드는 브랜치 → PR → 리뷰 → 병합으로 넣었습니다. main에는 보호 규칙(PR 필수 · 승인 1)을 걸고 승인은 PM이 맡았습니다. GitHub에서는 자기 PR을 스스로 승인할 수 없어 저장소 관리자인 PM만 이 규칙을 건너뛸 수 있게 두었고, PM이 맡은 문서 · 일정표 · 결정 기록과 결정에 따른 설정 · 인터페이스 변경은 이 권한으로 main에 바로 반영했습니다. 9/21부터는 PR 승인 때마다 검증 수준(자동 시험 · 가상 · 실기)을 밝혔습니다([결정 기록 E20](docs/decisions/20260919_결정기록_DSN-03.md)). 동결 뒤에는 기본 흐름 순서는 그대로 두고, 예외 처리 · 운영 화면 · 기록 DB와 실기로 확인한 설정값(배속 1.0 · 컵 재파지 곧게 내려가기 · 무게 표본 간격 · 떨림 상한) · 컵 팔레트 재티칭만 바꿨습니다.
 - **문서:** 요구사항(BR · SR) · 인터페이스(IRD) · 설계(SDD) · 결과표와 결정 기록 E1 ~ E71, 시험 기록 11개, 트러블슈팅 기록 8건을 남겼습니다. 문서 안내는 [docs/README.md](docs/README.md)에 있습니다.
 
 </details>
@@ -385,7 +385,7 @@ https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 
 ```bash
 # 받기 · 빌드 · 자동 시험 (ROS 2 Jazzy · colcon · pytest 설치 뒤 — setup.md 1~2)
-cd ~ && git clone https://github.com/rokey9-d2/rokey_9_pjt1_D2.git rokey_pjt01_ws
+cd ~ && git clone https://github.com/hwang-injae/prewash-cell.git rokey_pjt01_ws
 cd ~/rokey_pjt01_ws && source /opt/ros/jazzy/setup.bash
 colcon build --symlink-install && source install/setup.bash
 python3 -m pytest -q src

@@ -38,7 +38,7 @@
 
 ## 🎬 데모
 
-### ▶ 1분 시연 영상
+### ▶ 2분 시연 영상
 
 https://github.com/user-attachments/assets/fe7334f8-1464-4c8a-8df6-dcc02b2ce02a
 
